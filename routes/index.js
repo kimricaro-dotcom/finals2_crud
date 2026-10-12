@@ -27,6 +27,7 @@
 import express from "express";
 import { homePage } from "../controllers/homeController.js";
 import * as book from "../controllers/book.js";
+import * as bookPage from "../controllers/bookPageController.js";
 const router = express.Router();
 router.get("/", homePage);
 
@@ -36,5 +37,10 @@ router.get("/books/:id", book.show);
 router.post("/books", book.insert);
 router.put("/books/:id", book.update);
 router.delete("/books/:id", book.remove);
+
+router.get("/library", bookPage.index);
+router.get("/library/:id", bookPage.getBook);
+router.post("/library/:id", bookPage.update);
+router.post("/library/:id/delete", bookPage.remove);
 
 export default router;
